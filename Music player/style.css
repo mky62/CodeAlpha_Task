@@ -1,81 +1,152 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-
+/* General body styling */
 body {
-  background: linear-gradient(135deg, #9418fd, #571094);
-}
-
-.container {
-  width: 100%;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #cf9aff, #95c0ff);
-  color: #fff;
-  padding: 4% 10%;
-}
-
-.container h2 img {
-  width: 40px;
-  vertical-align: middle;
-}
-
-.btn {
+  background: #111;
   display: flex;
+  height: 100vh;
   align-items: center;
-  background: linear-gradient(#9418fd,#571094);
-  color: white;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+/* Heading */
+.player-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  color: #fff;
+  background: #aa4b6b;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #3b8d99, #6b6b83, #aa4b6b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* Player container */
+.player {
+  background: #222;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  width: 320px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* Controls (Prev, Play/Pause, Next) */
+.controls {
+  margin-bottom: 1rem;
+}
+
+.controls button {
+  font-size: 1.8rem;
+  background: none;
   border: none;
-  font-size: 16px;
-  border-radius: 40px;
-  outline: none;
-  padding: 10px 20px;
-  margin: 20px 0;
+  color: #fff;
   cursor: pointer;
+  margin: 0 15px;
+  transition: transform 0.2s ease;
 }
 
-.btn img {
-  width: 25px;
-  margin-right: 10px;
+.controls button:hover {
+  transform: scale(1.2);
 }
 
-.notes-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.input-box {
+/* Progress bar container */
+.progress-container {
+  background: #555;
+  height: 6px;
+  width: 100%;
+  margin: 1rem 0;
+  cursor: pointer;
   position: relative;
-  background: #fff;
-  color: #333;
-  padding: 15px;
-  min-height: 100px;
-  border-radius: 5px;
-  outline: none;
-  animation: fadeIn 0.3s ease-out;
+  border-radius: 3px;
 }
 
-.input-box img {
-  width: 25px;
-  position: absolute;
-  bottom: 15px;
-  right: 15px;
+.progress {
+  background: #1db954; /* Spotify green-ish */
+  height: 100%;
+  width: 0%;
+  border-radius: 3px;
+  transition: width 0.2s ease;
+}
+
+/* Time display */
+.time {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: #bbb;
+}
+
+/* Volume slider */
+.volume-control {
+  margin: 1rem 0;
+  text-align: left;
+}
+
+.volume-control label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.85rem;
+  color: #bbb;
+}
+
+.volume-control input[type="range"] {
+  width: 100%;
+  appearance: none;
+  height: 4px;
+  background: #555;
+  outline: none;
+  border-radius: 2px;
+}
+
+.volume-control input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #1db954;
+  border-radius: 50%;
   cursor: pointer;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+.volume-control input[type="range"]::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  background: #1db954;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-.input-box.fade-out {
-  animation: fadeOut 0.3s ease-in forwards;
+/* Upload button */
+.upload-control {
+  margin-top: 1rem;
+  text-align: left;
 }
 
-@keyframes fadeOut {
-  from { opacity: 1; transform: translateY(0); }
-  to { opacity: 0; transform: translateY(10px); }
+.upload-control label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 0.3rem;
+  color: #bbb;
+}
+
+.upload-control input[type="file"] {
+  display: none;
+}
+
+.upload-control .custom-upload {
+  display: inline-block;
+  background: #1db954;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+  text-align: center;
+}
+
+.upload-control .custom-upload:hover {
+  background: #17a34a;
 }
