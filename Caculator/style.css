@@ -1,0 +1,310 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    background : #7cc5d8;
+    justify-content: center;
+}
+
+.calculator{
+    background : #3a4452;
+    padding: 20px;
+    border-radius: 10px;
+    justify-content: center;
+    
+
+}
+.calculator form input{
+    border: 0;
+    outline: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
+    background: transparent;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+
+}
+form .display{
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+form .display input{
+    text-align: right;
+    flex: 1;
+    font-size: 45px;
+    box-shadow: none;
+}
+
+form input.equal{
+    width: 145px;
+    color: #d7d7d7;
+} */
+:root {
+    --calc-bg: #3a4452;
+    --btn-bg: rgba(255, 255, 255, 0.1);
+    --btn-hover: rgba(255, 255, 255, 0.2);
+    --text-color: #ffffff;
+    --display-color: #00ff99;
+    --equal-color: #00c6ff;
+}
+
+body {
+    background: url('https://cdn.pixabay.com/photo/2022/07/05/07/42/gradient-7302505_640.png') no-repeat center center fixed;
+    background-size: cover;
+    transition: background 0.3s ease;
+    min-height: 100vh;
+}
+
+body.light {
+    /* Light Theme Gradient Background */
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+    /* Light Mode Variable Overrides */
+    --calc-bg: #ffffff;
+    --btn-bg: rgba(0, 0, 0, 0.05);
+    --btn-hover: rgba(0, 0, 0, 0.1);
+    --text-color: #333333;
+    --display-color: #1e90ff;
+    --equal-color: #007acc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: var(--bg-color);
+    transition: background 0.3s ease;
+    min-height: 100vh;
+    background: #020024;
+    background: -webkit-linear-gradient(349deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    background: -moz-linear-gradient(349deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    background: linear-gradient(349deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024", endColorstr="#00D4FF", GradientType=0);
+}
+
+/* .container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.calculator {
+    background: var(--calc-bg);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    position: relative;
+    right: 120px; /* move the calculator to the left */
+}
+
+.calculator form input {
+    border: 0;
+    outline: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    background: var(--btn-bg);
+    font-size: 20px;
+    color: var(--text-color);
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.2s ease;
+}
+
+.calculator form input:hover {
+    background: var(--btn-hover);
+    transform: scale(1.05);
+}
+
+form .display {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+
+form .display input {
+    text-align: right;
+    flex: 1;
+    font-size: 45px;
+    box-shadow: none;
+    background: transparent;
+    color: var(--display-color);
+}
+
+form input.equal {
+    width: 145px;
+    background: var(--equal-color);
+    color: #fff;
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    background-color: #877979;
+    transition: 0.4s;
+    border-radius: 26px;
+
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #002d53;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    gap: 70px;
+    
+}
+
+.left-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-content h1 {
+    font-size: 3rem;
+    color: var(--text-color);
+    text-align: center;
+    line-height: 1.2;
+}
+
+.calculator {
+    margin-left: 30px;
+}
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .left-content {
+        order: 1;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .calculator {
+        order: 2;
+        margin-left: 0;
+    }
+
+    .left-content h1 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .left-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .calculator form input {
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+        margin: 6px;
+    }
+
+    form input.equal {
+        width: 115px;
+    }
+
+    form .display input {
+        font-size: 30px;
+    }
+}
+.left-content h1 {
+    font-size: 3rem;
+    color: var(--text-color);
+    text-align: left;
+    line-height: 1.6;
+    animation: fadeInUp 1.2s ease-out both;
+}
+.left-content h1 span.line1 {
+    color: #000;
+    font-size: 50px;
+    border-bottom: 2px solid #00c6ff;
+
+
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
